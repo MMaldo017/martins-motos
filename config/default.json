@@ -1,3 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://Rams1999:Rams1999@martinsm.joyt5.mongodb.net/?retryWrites=true&w=majority&appName=MartinsM"
+    "mongoURI": "mongodb+srv://Rams1999:Rams1999@martinsm.joyt5.mongodb.net/?retryWrites=true&w=majority&appName=MartinsM", 
+    "jwtSecret": "mysecrettoken"
 }

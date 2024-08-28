@@ -6,6 +6,7 @@ const db = config.get('mongoURI');
 const connectDB = async () => {
     try{
         mongoose.connect(db, {
+        
 
         });
         console.log('Connect to Motos MongoDM')

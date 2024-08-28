@@ -2,7 +2,7 @@ const express = require ('express')
 const router = express.Router();
 
 const bcryt = require('bcryptjs');
-// const auth = require('../../middleware/aut');
+// const auth = require('../../middleware/auth');
 
 const jwt = require('jsonwebtoken');
 const {check, validationResult} = require('express-validator');
@@ -11,14 +11,6 @@ const {check, validationResult} = require('express-validator');
 //@route Get api/auth
 //@desc get authenciated user
 //@acess Public (Protected by auth middleware)
-router.get('/', auth, async (req, res) => {
-    try {
-        const user = await User.findById(req.user.id).select('-password');
-        res.json(user);
+router.get('/',  (req, res) => res.send('Auth route'));
 
-    } catch (err) {
-        console.err(err.message);
-        res.status(500).send('Server Error');
-    }
-
-})
+module.exports = router;
