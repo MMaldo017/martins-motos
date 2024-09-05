@@ -40,7 +40,7 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-
+    //fields
     const {
       company,
       website,
@@ -154,5 +154,71 @@ router.delete('/', auth, async (req, res) => {
     res.status(500).send('Server Error');
   }
 })
+
+
+//@ route PUT api/profile/experience
+//@Desc add profile experience
+//@Public
+
+router.put(
+  '/experience',
+  [
+    auth,
+    [
+      check('title', 'Job title is required').not().isEmpty(),
+      check('company', 'Company name is required').not().isEmpty(),
+      check('from', 'Start date of employment is required').not().isEmpty(),
+    ]
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+//job fields for work experience
+    const  {
+      title,
+      company,
+      current,
+      from,
+      to,
+      description
+      
+    } = req.body;
+
+    const otherExperience = {
+      title,
+      company,
+      from,
+      to,
+      current,
+      description
+      
+    } 
+    try {
+      const profile = await Profile.findOne({user: req.user.id});
+      profile.experience.unshift(otherExperience);
+      profile.save();
+      res.json(profile);
+    }catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+
+
+    // const jobFields = {};
+    // jobFields.user = req.user.id;
+    // if (title) jobFields.title = title;
+    // if (company) jobFields.company = company;
+    // if (to) jobFields.to = to;
+    // if (current) jobFields.current = current;
+    // if (from) jobFields.from = from
+
+    
+  }
+ 
+  
+  )
+
 
 module.exports = router;
