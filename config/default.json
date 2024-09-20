@@ -1,4 +1,6 @@
 {
     "mongoURI": "mongodb+srv://Rams1999:Rams1999@martinsm.joyt5.mongodb.net/?retryWrites=true&w=majority&appName=MartinsM", 
-    "jwtSecret": "mysecrettoken"
+    "jwtSecret": "mysecrettoken",
+    "githubClientId": "Ov23liMDNeZYCOeOw7Br",
+    "githubClientSecret": "d24260060693dc9df4fb7980fcc9dee6d0bda95b"
 }
